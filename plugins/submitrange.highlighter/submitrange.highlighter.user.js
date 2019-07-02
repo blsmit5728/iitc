@@ -2,7 +2,7 @@
 // @id             iitc-plugin-submitrangehighlighter@wintervorst
 // @name           IITC plugin: Portal submitrange - Highlight edition
 // @category       Highlighter
-// @version        1.0.7.20190702.0
+// @version        1.0.7.20190702.1
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
 // @updateURL      https://github.com/blsmit5728/iitc/raw/master/plugins/submitrange/submitrange.user.js
 // @downloadURL    https://github.com/blsmit5728/iitc/raw/master/plugins/submitrange/submitrange.user.js
@@ -37,8 +37,9 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
   window.plugin.submitrangeHighlighter = function() {};
 
   window.plugin.submitrangeHighlighter.highlight = function(data) {
-		var guid = data.portal.options.guid;
-		var portal = data.portal;
+	  var portal = window.portals[window.selectedPortal];
+		var guid = data;
+		//var portal = data.portal;
 		var bounds = map.getBounds();
 
 	if (window.plugin.submitrangeHighlighter.submitrangeHighlighterLayers[guid] == undefined) {
