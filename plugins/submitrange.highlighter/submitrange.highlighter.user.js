@@ -2,10 +2,10 @@
 // @id             iitc-plugin-submitrangehighlighter@wintervorst
 // @name           IITC plugin: Portal submitrange - Highlight edition
 // @category       Highlighter
-// @version        1.0.7.20181004.013370
+// @version        1.0.7.20190702.0
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @updateURL      https://github.com/Wintervorst/iitc/raw/master/plugins/submitrange/submitrange.user.js
-// @downloadURL    https://github.com/Wintervorst/iitc/raw/master/plugins/submitrange/submitrange.user.js
+// @updateURL      https://github.com/blsmit5728/iitc/raw/master/plugins/submitrange/submitrange.user.js
+// @downloadURL    https://github.com/blsmit5728/iitc/raw/master/plugins/submitrange/submitrange.user.js
 // @description    [iitc-20181004.013370] Shows the 'too close' radius of existing portals, in order to see where you can search for and submit new candidates
 // @include        https://*.ingress.com/intel*
 // @include        http://*.ingress.com/intel*
@@ -98,9 +98,10 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
 
       window.plugin.submitrangeHighlighter.submitrangeHighlighterLayers = new L.LayerGroup();
       window.addPortalHighlighter('Portal submit range', window.plugin.submitrangeHighlighter);
-      addHook('mapDataRefreshEnd', window.plugin.submitrangeHighlighter.urlMarker);
-      addHook('portalAdded', window.plugin.submitrangeHighlighter.portalAdded);
-    	//addHook('portalRemoved', window.plugin.submitrangeHighlighter.unhighlight);
+      addHook('portalSelected', window.plugin.submitrangeHighlighter.portalAdded);
+      //addHook('mapDataRefreshEnd', window.plugin.submitrangeHighlighter.urlMarker);
+      //addHook('portalAdded', window.plugin.submitrangeHighlighter.portalAdded);
+      //addHook('portalRemoved', window.plugin.submitrangeHighlighter.unhighlight);
   }
 
   window.plugin.submitrangeHighlighter.portalAdded = function(data) {
