@@ -38,17 +38,23 @@ if(typeof window.plugin !== 'function') window.plugin = function() {};
   window.plugin.submitrange.layerlist = {};	
   
    window.plugin.submitrange.update = function() {		    
-     if (!window.map.hasLayer(window.plugin.submitrange.submitrangeLayers))
-     return;
-      
-	 if (window.map.hasLayer(window.plugin.submitrange.submitrangeLayers)) {
-         window.plugin.submitrange.submitrangeLayers.clearLayers();    
-	      
-		 $.each(window.portals, function(i, portal) {    	      
+     if (!window.map.hasLayer(window.plugin.submitrange.submitrangeLayers)){
+     	return;
+     }
+     var zoom = map.getZoom();
+     if (zoom >= 17)
+     {
+     	if (window.map.hasLayer(window.plugin.submitrange.submitrangeLayers)) {
+     		window.plugin.submitrange.submitrangeLayers.clearLayers();    
+	  
+		$.each(window.portals, function(i, portal) {    	      
 			window.plugin.submitrange.draw(portal);
-   		 });          
-		 window.plugin.submitrange.urlMarker();		
-      }
+   		});          
+		window.plugin.submitrange.urlMarker();		
+      	}
+     }else{
+        return;
+     }
    }
 
   window.plugin.submitrange.setSelected = function(a) {        
